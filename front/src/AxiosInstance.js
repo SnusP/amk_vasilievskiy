@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: '/api/'
+  baseURL: 'http://amk-vo.online/api/'
 })
 
 export default instance
