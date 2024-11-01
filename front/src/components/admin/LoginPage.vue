@@ -50,7 +50,7 @@ function reg() {
           <v-btn @click="login">Войти</v-btn>
         </div>
 
-          <div class="w-50 mx-auto">
+        <div class="w-50 mx-auto">
           <h2>Рега</h2>
           <v-text-field label="Логин" v-model="regForm.login"></v-text-field>
           <v-text-field label="Пароль" v-model="regForm.password"></v-text-field>
