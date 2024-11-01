@@ -1,12 +1,13 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import instance from '@/AxiosInstance'
+import axios from 'axios';
 import PhotosList from './PhotosList.vue'
 let firstElem = ''
 const items = ref([])
 function getPhotos() {
-  instance
-    .get('photos/')
+  axios
+    .get('/api/photos/')
     .then((response) => {
       console.log(response.status)
       if (response.status === 200) {
