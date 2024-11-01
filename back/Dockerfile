@@ -3,7 +3,7 @@ FROM node:20
 WORKDIR /back
     
 COPY package*.json ./
-RUN npm cache clean --force && npm install
+RUN npm cache clean --force && npm install --verbose
 
 COPY . .
 
