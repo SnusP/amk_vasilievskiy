@@ -14,5 +14,14 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://amk-vo.online',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '/api'), // можно настроить перезапись пути, если нужно
+      },
+    },
+  },
 })
