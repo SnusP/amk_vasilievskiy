@@ -28,7 +28,11 @@ export default class App {
 
   private createApp(): express.Application {
     const app = express();
-    app.use(cors());
+    app.use(cors({
+    origin: 'http://amk-vo.online', // разрешите доступ с адреса вашего фронтенда
+    methods: ['GET', 'POST', 'PATCH', 'DELETE'], // разрешенные методы
+    allowedHeaders: ['Content-Type'], // разрешенные заголовки
+    }));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use("/", routes);
