@@ -17,11 +17,11 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': {
-        target: 'http://amk-vo.online',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '/api'), // можно настроить перезапись пути, если нужно
-      },
+    '/api': {
+      target: 'http://amk-vo.online',
+      changeOrigin: true,
+      secure: false,
     },
+  },
   },
 })
