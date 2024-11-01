@@ -7,7 +7,7 @@ services:
     ports:
       - "80:80"  # Прокидываем порт 80 для доступа к nginx снаружи
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf  # Подключаем конфигурацию nginx
+      - ./front/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - frontend
       - backend
