@@ -11,9 +11,14 @@ const form = ref({
   password: ''
 })
 
+const regForm = ref({
+  login: '',
+  password: ''
+})
+
 function login() {
   instance
-    .post('/login', form.value)
+    .post('http://amk-vo.online/api/login', form.value)
     .then((response) => {
       if (response.status === 201) {
         Token.setToken(response.data.token)
@@ -22,6 +27,15 @@ function login() {
     })
     .catch((error) => console.log(error))
 }
+function reg() {
+  instance
+    .post('http://amk-vo.online/api/register', form.value)
+    .then((response) => {
+      console.log("registered")
+    })
+    .catch((error) => console.log(error))
+}
+  
 </script>
 
 <template>
@@ -34,6 +48,13 @@ function login() {
           <v-text-field label="Логин" v-model="form.login"></v-text-field>
           <v-text-field label="Пароль" v-model="form.password"></v-text-field>
           <v-btn @click="login">Войти</v-btn>
+        </div>
+
+          <div class="w-50 mx-auto">
+          <h2>Рега</h2>
+          <v-text-field label="Логин" v-model="regForm.login"></v-text-field>
+          <v-text-field label="Пароль" v-model="regForm.password"></v-text-field>
+          <v-btn @click="reg">Войти</v-btn>
         </div>
       </v-app>
     </v-main>
