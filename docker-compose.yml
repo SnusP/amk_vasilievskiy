@@ -1,0 +1,53 @@
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./front
+    restart: always
+    ports:
+      - 8080:80
+    depends_on:
+      - backend
+      - db
+    networks:
+      - app-network
+
+  backend:
+    container_name: backend
+    build:
+      context: ./back
+    restart: always
+    expose:
+      - 5000
+    env_file:
+      - ./back/.env
+    volumes:
+      - uploads_data:/back/uploads
+    networks:
+      - app-network
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    image: postgres:14
+    environment:
+      POSTGRES_DB: amk
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1122
+
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  uploads_data:
