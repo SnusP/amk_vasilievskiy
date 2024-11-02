@@ -10,7 +10,7 @@ import { auth } from "../middlewares/auth";
 
 const router: express.Router = express.Router();
 
-router.use("/users", auth, userRoutes);
+router.use("/users", userRoutes);
 router.use("/services", serviceRoutes);
 router.use("/", authRoutes);
 router.use("/email", emailRoutes);
